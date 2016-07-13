@@ -13,6 +13,7 @@ public class JDBCCreateTable extends ConnectionDB {
 			createDbCourseTable();
 			createDbStudentsTable();
 			createDbAddressTable();
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
