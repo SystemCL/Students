@@ -22,8 +22,7 @@ public class MySqlDaoFactory implements DaoFactory<Connection> {
     private String password = "";
     private String url = "jdbc:mysql://localhost:3306/studentsdb";
     private String driver = "com.mysql.jdbc.Driver";
-    @SuppressWarnings("rawtypes")
-	private Map<Class, DaoCreator> creators;
+    private Map<Class, DaoCreator> creators;
 
     public Connection getContext() throws PersistException {
         Connection connection = null;
@@ -35,8 +34,7 @@ public class MySqlDaoFactory implements DaoFactory<Connection> {
         return  connection;
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
+    @Override
     public GenericDao getDao(Connection connection, Class dtoClass) throws PersistException {
         DaoCreator creator = creators.get(dtoClass);
         if (creator == null) {
@@ -45,8 +43,7 @@ public class MySqlDaoFactory implements DaoFactory<Connection> {
         return creator.create(connection);
     }
 
-    @SuppressWarnings("rawtypes")
-	public MySqlDaoFactory() {
+    public MySqlDaoFactory() {
         try {
             Class.forName(driver);//se inregistreaza driver-ul
         } catch (ClassNotFoundException e) {
@@ -66,5 +63,18 @@ public class MySqlDaoFactory implements DaoFactory<Connection> {
                 return new MySqlStudentDao(connection);
             }
         });
+        creators.put(Course.class, new DaoCreator<Connection>() {
+            @Override
+            public GenericDao create(Connection connection) {
+                return new MySqlCourseDao(connection);
+            }
+        });
+        creators.put(Address.class, new DaoCreator<Connection>() {
+            @Override
+            public GenericDao create(Connection connection) {
+                return new MySqlAddressDao(connection);
+            }
+        });
+        
     }
 }
