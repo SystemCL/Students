@@ -6,22 +6,23 @@ CREATE TABLE IF NOT EXISTS `studentsdb`.`Group` (
   `faculty` VARCHAR(60) NULL,
   PRIMARY KEY (`id`) );
 
-CREATE TABLE IF NOT EXISTS `studentdb`.`Student` (
+CREATE TABLE IF NOT EXISTS `studentsdb`.`Student` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `firstName` VARCHAR(50) ,
   `lastName` VARCHAR(50) ,
   `age` INT NOT NULL ,
   `enrolment_date` DATE NULL,
-  `group_id` INT ,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`group_id`) REFERENCES Group(id) ON DELETE CASCADE );
+  PRIMARY KEY (`id`) );
+  --`group_id` INT ,
+  
+ -- FOREIGN KEY (`group_id`) REFERENCES Group(id) ON DELETE CASCADE );
   
   CREATE TABLE IF NOT EXISTS `studentsdb`.`Address` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `nameAddress` VARCHAR(50) ,
   `nrPhone` VARCHAR(50) ,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`id`) REFERENCES Student(`id`));
+  PRIMARY KEY (`id`));
+  --FOREIGN KEY (`id`) REFERENCES Student(`id`));
   
   CREATE TABLE IF NOT EXISTS `studentsdb`.`Course` (
   `id` INT NOT NULL AUTO_INCREMENT ,

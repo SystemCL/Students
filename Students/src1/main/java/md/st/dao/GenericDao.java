@@ -11,7 +11,7 @@ public interface GenericDao<T extends Identified<PK>, PK extends Serializable> {
 	//Creeaza o noua inregistrare si obiectul sau
 	public T create() throws PersistException;
     
-	//Creeaza o noua inegistrare care corespunde obiectului object
+	//Creeaza o noua inregistrare care corespunde obiectului object
     public T persist(T object)  throws PersistException;
 
     //Returneaza obiectul care corespunde inregistrarii cu PK key sau null

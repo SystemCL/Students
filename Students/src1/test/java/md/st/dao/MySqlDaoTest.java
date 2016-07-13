@@ -31,7 +31,7 @@ public class MySqlDaoTest extends GenericDaoTest<Connection> {
     public static Collection getParameters() {
         return Arrays.asList(new Object[][]{
                 {Group.class, new Group()},
-              /*  {Student.class, new Student()},*/
+                {Student.class, new Student()},
                 {Course.class, new Course()}, 
                 {Address.class, new Address()},
                 

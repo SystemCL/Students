@@ -11,7 +11,7 @@ public class Student implements Identified<Integer> {
 	public String lastName;
 	public int age;
 	public Date enrolement_date;
-	public Integer group_id;
+	//public Integer group_id;
 	
 	public Integer getId() {
 		return id;
@@ -53,13 +53,13 @@ public class Student implements Identified<Integer> {
 		this.enrolement_date = enrolement_date;
 	}
 
-	public Integer getGroup_id() {
+/*	public Integer getGroup_id() {
 		return group_id;
 	}
 
 	public void setGroup_id(Integer group_id) {
 		this.group_id = group_id;
-	}
+	}*/
 
 	
 }

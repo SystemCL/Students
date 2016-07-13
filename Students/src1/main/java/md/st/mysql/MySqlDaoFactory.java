@@ -3,9 +3,10 @@ package md.st.mysql;
 import md.st.dao.DaoFactory;
 import md.st.dao.GenericDao;
 import md.st.dao.PersistException;
-import md.st.dao.DaoFactory.DaoCreator;
 import md.st.entity.Group;
 import md.st.entity.Student;
+import md.st.entity.Course;
+import md.st.entity.Address;
 import md.st.mysql.MySqlGroupDao;
 import md.st.mysql.MySqlStudentDao;
 
@@ -21,7 +22,8 @@ public class MySqlDaoFactory implements DaoFactory<Connection> {
     private String password = "";
     private String url = "jdbc:mysql://localhost:3306/studentsdb";
     private String driver = "com.mysql.jdbc.Driver";
-    private Map<Class, DaoCreator> creators;
+    @SuppressWarnings("rawtypes")
+	private Map<Class, DaoCreator> creators;
 
     public Connection getContext() throws PersistException {
         Connection connection = null;
@@ -33,7 +35,8 @@ public class MySqlDaoFactory implements DaoFactory<Connection> {
         return  connection;
     }
 
-    @Override
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
     public GenericDao getDao(Connection connection, Class dtoClass) throws PersistException {
         DaoCreator creator = creators.get(dtoClass);
         if (creator == null) {
@@ -42,7 +45,8 @@ public class MySqlDaoFactory implements DaoFactory<Connection> {
         return creator.create(connection);
     }
 
-    public MySqlDaoFactory() {
+    @SuppressWarnings("rawtypes")
+	public MySqlDaoFactory() {
         try {
             Class.forName(driver);//se inregistreaza driver-ul
         } catch (ClassNotFoundException e) {
