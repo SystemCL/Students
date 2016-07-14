@@ -23,6 +23,7 @@ public class Student implements Identified<Integer> {
 		Class<T> object = (Class)t;
         Annotation[] annotations = object.getAnnotations();
         for(Annotation annotation1 : annotations){
+        	//Column b = (Column)annotation1; 
         	System.out.println(annotation1);
         }
 	}
@@ -32,8 +33,10 @@ public class Student implements Identified<Integer> {
 		Field[] field= aClass.getDeclaredFields();
         for (int i = 0; i < field.length; i++) {
         	 Annotation[] annotations2 = field[i].getDeclaredAnnotations();
+        	 
              for(Annotation annotation1 : annotations2){
-             	System.out.println(annotation1);
+            	 Column a= (Column) annotation1 ;
+             	System.out.println(a.name());
              }
 		}
 	}
@@ -41,7 +44,9 @@ public class Student implements Identified<Integer> {
 	public static void main(String[] args) {
 		
 		
+		EntAnn(Student.class);
 		ColAnn(Student.class);
+		
 		
 		
 		/*if (annotation instanceof Entity) {
