@@ -1,6 +1,9 @@
 package md.st.dao;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -10,13 +13,16 @@ import org.junit.runners.Parameterized;
 
 import md.st.dao.GenericDao;
 import md.st.dao.Identified;
-
+import md.st.entity.*;
+import md.st.mysql.MySqlDaoFactory;
 @RunWith(Parameterized.class)
 public abstract class GenericDaoTest<Context> {
 	 /**
      * Clasa pentru testare
      */
 	protected Class daoClass;
+	private Connection connection;
+	private static final DaoFactory<Connection> factory = new MySqlDaoFactory();
 	 /**
      * 
      */ 
@@ -39,7 +45,9 @@ public abstract class GenericDaoTest<Context> {
         Assert.assertNotNull(dto);
         Assert.assertNotNull(dto.getId());
     }
-
+/////////////////////////////////////////////////////
+    
+ ///////////////////////////////////////////////////   
     @Test
     public void testPersist() throws Exception {
         Assert.assertNull("Id befor persist is not null.", notPersistedDto.getId());

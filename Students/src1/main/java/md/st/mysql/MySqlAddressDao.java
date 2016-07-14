@@ -21,7 +21,7 @@ public class MySqlAddressDao extends AbstractJDBCDao<Address, Integer> {
 	
 	 @Override
 	    public String getSelectQuery() { 
-	        return "SELECT id, nameAddress, nrPhone  FROM studentsdb.Address";
+	        return "SELECT id, nameAddress, nrPhone FROM studentsdb.Address";
 	    }
 
 	 @Override

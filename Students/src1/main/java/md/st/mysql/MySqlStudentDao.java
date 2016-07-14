@@ -26,7 +26,7 @@ public class MySqlStudentDao extends AbstractJDBCDao<Student, Integer> {
     
     @Override
     public String getCreateQuery() {
-        return "INSERT INTO studentsdb.Student (firstName, lastName, age, enrolment_date) \n" +
+        return "INSERT INTO studentsdb.Student (firstName, lastName, age, enrolment_date ) \n" +
                 "VALUES (?, ?, ?, ?);";
     }
 
@@ -62,8 +62,9 @@ public class MySqlStudentDao extends AbstractJDBCDao<Student, Integer> {
                 student.setFirstName(rs.getString("firstName"));
                 student.setLastName(rs.getString("lastName"));
                 student.setAge(rs.getInt("age"));
-                student.setEnrolement_date(rs.getDate("enrolment_date"));
-               // student.setGroup_id(rs.getInt("group_id"));
+                student.setEnrolment_date(rs.getDate("enrolment_date"));
+         
+                // student.setGroup_id(rs.getInt("group_id"));
                 result.add(student);
             }
         } catch (Exception e) {
@@ -75,11 +76,12 @@ public class MySqlStudentDao extends AbstractJDBCDao<Student, Integer> {
     @Override
     protected void prepareStatementForUpdate(PreparedStatement statement, Student object) throws PersistException {
         try {
-            Date sqlDate = convert(object.getEnrolement_date());
+            Date sqlDate = convert(object.getEnrolment_date());
             statement.setString(1, object.getFirstName());
             statement.setString(2, object.getLastName());
             statement.setInt(3, object.getAge());
             statement.setDate(4, sqlDate);
+           
           //  statement.setInt(5, object.getGroup_id());
         } catch (Exception e) {
             throw new PersistException(e);
@@ -89,12 +91,13 @@ public class MySqlStudentDao extends AbstractJDBCDao<Student, Integer> {
     @Override
     protected void prepareStatementForInsert(PreparedStatement statement, Student object) throws PersistException {
         try {
-            Date sqlDate = convert(object.getEnrolement_date());
+            Date sqlDate = convert(object.getEnrolment_date());
           //  int studentId = (object.getGroup_id() == null) ? 0 : object.getGroup_id();
             statement.setString(1, object.getFirstName());
             statement.setString(2, object.getLastName());
             statement.setInt(3, object.getAge());
             statement.setDate(4, sqlDate);
+      
            // statement.setInt(5, studentId);
         } catch (Exception e) {
             throw new PersistException(e);
