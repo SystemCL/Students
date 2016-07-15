@@ -26,6 +26,8 @@ public class AllAnnotations {
 	}
 
 	public static <T> String ColAnt(T t) {
+		
+		
 		Class<T> aClass = (Class) t;
 		String column = null;
 		Field[] field = aClass.getDeclaredFields();
@@ -34,7 +36,10 @@ public class AllAnnotations {
 			
 			for (Annotation annotation1 : annotations2) {
 				Column a = (Column) annotation1;
-				//System.out.println(a.name());
+				String b = a.name();
+				String c = new String(b);
+			    System.out.print("`"+c+"`"+",");
+			    //a.substring(5).replace(a.substring(5, 6), "")
 				column = a.name();
 			}
 		}

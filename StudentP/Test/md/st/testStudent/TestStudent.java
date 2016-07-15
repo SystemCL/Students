@@ -27,6 +27,9 @@ public class TestStudent extends AllAnnotations {
 			TestStudent demo = new TestStudent();
 			Student student = demo.getStudent(studentId);
 			System.out.println(student);
+			
+			String a = "ABCDE,";
+			System.out.println(a.substring(5).replace(a.substring(5, 6), ""));
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -34,8 +37,10 @@ public class TestStudent extends AllAnnotations {
 		}
 		
 		
-		EntAnt(Student.class);
-		ColAnt(Student.class);
+		//EntAnt(Student.class);
+	//	ColAnt(Student.class);
+		AllAnnotations.ColAnt(Student.class);
+
 		
 	}
 	
@@ -46,15 +51,20 @@ public class TestStudent extends AllAnnotations {
 		Statement statement = null;
 
 		Student student = null;
+		//String query = "SELECT * FROM "+ AllAnnotations.EntAnt(Student.class) + " WHERE id=" + studentId; //studentId
 		String query = "SELECT * FROM "+ AllAnnotations.EntAnt(Student.class) + " WHERE id=" + studentId; //studentId
-
+		
 		try {
 			connection = MySqlConnection.getConnection();
 			statement = connection.createStatement();
 			rs = statement.executeQuery(query);
+			if(rs == null){
+				System.out.print("Cannot access the object with id=" +studentId);
+			}
 
 			if (rs.next()) {
 				student = new Student();
+				student.setId(rs.getInt("id"));
 				student.setFirstName(rs.getString("firstName"));
 				student.setLastName(rs.getString("lastName"));
 				student.setAge(rs.getInt("age"));
