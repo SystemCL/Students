@@ -27,9 +27,11 @@ public class TestStudent extends AllAnnotations {
 			TestStudent demo = new TestStudent();
 			Student student = demo.getStudent(studentId);
 			System.out.println(student);
+			/*
+			 * String a = "ABCDE,";
+			System.out.println( a.substring(5).replace(a.substring(5, 6), "")); */
 			
-			String a = "ABCDE,";
-			System.out.println(a.substring(5).replace(a.substring(5, 6), ""));
+			//System.out.println(a.substring(5).replace(a.substring(5, 6), ""));
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -41,7 +43,7 @@ public class TestStudent extends AllAnnotations {
 	//	ColAnt(Student.class);
 		AllAnnotations.ColAnt(Student.class);
 
-		
+
 	}
 	
 

@@ -33,14 +33,27 @@ public class AllAnnotations {
 		Field[] field = aClass.getDeclaredFields();
 		for (int i = 0; i < field.length; i++) {
 			Annotation[] annotations2 = field[i].getDeclaredAnnotations();
+			if(i==field.length-1){ 
+				for (Annotation annotation1 : annotations2) {
+					Column a = (Column) annotation1;
+					String b = a.name();
+					//annotations2[0]
+					String c = new String(b);
+				    System.out.print("`"+c+"`"+" ");
 			
+			}
+			}
+	
+				else{
 			for (Annotation annotation1 : annotations2) {
 				Column a = (Column) annotation1;
 				String b = a.name();
+				//annotations2[0]
 				String c = new String(b);
 			    System.out.print("`"+c+"`"+",");
-			    //a.substring(5).replace(a.substring(5, 6), "")
+			   // b.substring(5).replace(b.substring(5, 6), "");
 				column = a.name();
+			}
 			}
 		}
 		return column;
