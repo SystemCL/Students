@@ -32,6 +32,7 @@ public class MySqlConnection {
 		} catch (SQLException e) {
 			System.out.println("ERROR: Unable to Connect to Database.");
 		}
+		
 		return connection;
 	}	
 	

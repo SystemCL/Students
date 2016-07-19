@@ -3,14 +3,10 @@ package md.st.entity;
 import java.util.Date;
 
 import md.st.dao.Identification;
-import md.st.entity.Student1.Builder;
-import md.st.entity.annotations.*;
+import md.st.entity.annotations.Column;
 
-
-@Entity(tableName = "Student")
-public class Student implements Identification<Integer> {
-	@Column(name = "id")
-	private Integer id;
+public class Student2 implements Identification<Integer> {
+	private Integer id = null;
 	@Column(name = "firstName")
 	public String firstName;
 	@Column(name = "lastName")
@@ -20,34 +16,21 @@ public class Student implements Identification<Integer> {
 	@Column(name = "enrolment_date")
 	public Date enrolment_date;
 
-        /*
-		 * if (annotation instanceof Entity) { Entity entity = (Entity)
-		 * annotation; System.out.println("dbName: " + entity.dbName());
-		 * System.out.println("tableName: " + entity.tableName()); }
-		 */
-
-		/*
-		 * Class<Student> bClass = Student.class; Annotation annotation1 =
-		 * bClass.getAnnotation(Column.class);
-		 * 
-		 * if (annotation1 instanceof Column) { Column column = (Column)
-		 * annotation1; System.out.println("name: " + column.name());
-		 * 
-		 * }
-		 */
-
-
-	// public Integer group_id;
-
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 	
 
+	private Student2(String firstName, String lastName ){
+		this.firstName =firstName;
+		this.lastName = lastName;
+		
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -80,6 +63,7 @@ public class Student implements Identification<Integer> {
 		this.enrolment_date = enrolment_date;
 	}
 
+	
 	@Override
 	public String toString(){
 		return " id: " + id + "\n" +
@@ -88,5 +72,7 @@ public class Student implements Identification<Integer> {
 	           " age: " + age + "\n" +
 				" enrolmentDate: "+ enrolment_date + "\n\n";
 	}
+
+
 
 }

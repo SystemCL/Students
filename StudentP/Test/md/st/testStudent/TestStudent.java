@@ -1,3 +1,4 @@
+
 package md.st.testStudent;
 
 import java.io.BufferedReader;
@@ -10,11 +11,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import md.st.entity.AllAnnotations;
+import md.st.entity.RetrieveAnnotations;
+import md.st.entity.Group;
 import md.st.entity.Student;
 import md.st.mysqlconn.MySqlConnection;
 
-public class TestStudent extends AllAnnotations {
+public class TestStudent {
 	public static void main(String[] args) {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	    
@@ -41,7 +43,10 @@ public class TestStudent extends AllAnnotations {
 		
 		//EntAnt(Student.class);
 	//	ColAnt(Student.class);
-		AllAnnotations.ColAnt(Student.class);
+		RetrieveAnnotations.ColumnAnnotation(Student.class);
+		//AllAnnotations.ColAnt(Group.class);
+		System.out.println("INSERT INTO "+RetrieveAnnotations.EntityAnnotation(Student.class)+
+				" ("+RetrieveAnnotations.ColumnAnnotation(Student.class) + ") VALUES (?, ?, ?, ?);");
 
 
 	}
@@ -54,7 +59,7 @@ public class TestStudent extends AllAnnotations {
 
 		Student student = null;
 		//String query = "SELECT * FROM "+ AllAnnotations.EntAnt(Student.class) + " WHERE id=" + studentId; //studentId
-		String query = "SELECT * FROM "+ AllAnnotations.EntAnt(Student.class) + " WHERE id=" + studentId; //studentId
+		String query = "SELECT * FROM "+ RetrieveAnnotations.EntityAnnotation(Student.class) + " WHERE id=" + studentId; //studentId
 		
 		try {
 			connection = MySqlConnection.getConnection();
@@ -66,7 +71,7 @@ public class TestStudent extends AllAnnotations {
 
 			if (rs.next()) {
 				student = new Student();
-				student.setId(rs.getInt("id"));
+				//student.setId(rs.getInt("id"));
 				student.setFirstName(rs.getString("firstName"));
 				student.setLastName(rs.getString("lastName"));
 				student.setAge(rs.getInt("age"));
