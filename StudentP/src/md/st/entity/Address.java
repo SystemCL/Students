@@ -37,4 +37,11 @@ public class Address implements Identification<Integer> {
 		this.nrPhone = nrPhone;
 	}
 
+	
+	@Override
+	public String toString(){
+		return " id: " + id + "\n" +
+	           " nameAddress: " + nameAddress+ "\n" +
+				" nrPhone: " + nrPhone + "\n\n";
+	}
 }

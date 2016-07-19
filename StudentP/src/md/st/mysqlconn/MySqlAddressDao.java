@@ -10,6 +10,7 @@ import md.st.dao.AbstractJDBCDao;
 import md.st.dao.GeneralException;
 import md.st.entity.Address;
 import md.st.entity.RetrieveAnnotations;
+import md.st.entity.annotations.Column;
 
 
 
@@ -22,12 +23,12 @@ public class MySqlAddressDao extends AbstractJDBCDao<Address, Integer> {
 	
 	 @Override
 	    public String getSelectQuery() { 
-	        return "SELECT " + RetrieveAnnotations.ColumnAnnotation(Address.class) + " FROM "+ RetrieveAnnotations.EntityAnnotation(Address.class); //id, nameAddress, nrPhone
+	        return "SELECT * FROM "+ RetrieveAnnotations.EntityAnnotation(Address.class); //id, nameAddress, nrPhone
 	    }
 
 	 @Override
 	    public String getCreateQuery() {
-	        return "INSERT INTO "+RetrieveAnnotations.EntityAnnotation(Address.class)+" ("+RetrieveAnnotations.ColumnAnnotation(Address.class) + ") \n" +
+	        return "INSERT INTO "+RetrieveAnnotations.EntityAnnotation(Address.class)+" (`nameAddress` , `nrPhone`) \n" +
 	                "VALUES (?, ?);";
 	    }
 	 

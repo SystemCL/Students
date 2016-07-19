@@ -14,7 +14,7 @@ import md.st.mysqlconn.MySqlDaoFactory;
 import md.st.mysqlconn.MySqlGroupDao;
 import md.st.mysqlconn.MySqlStudentDao;
 
-public class TestInsertGroup extends MySqlStudentDao {
+public class TestInsertGroup extends MySqlGroupDao {
 
 	
 	public TestInsertGroup(Connection connection) {
@@ -26,8 +26,9 @@ public class TestInsertGroup extends MySqlStudentDao {
 	public static void main(String[] args) throws GeneralException, SQLException {
 		DaoFactory<Connection> factory = new MySqlDaoFactory();
 		Connection connection = (Connection) factory.getContext(); 
-		GenericDao dao = factory.getDao(connection, Student.class);
+		GenericDao dao = factory.getDao(connection, Group.class);
 	//	System.out.println(RetrieveAnnotations.ColumnAnnotation(Student.class));
+		
 		
 	/*	Group g = new Group();
 		g.setNomGroup("FI-111");
@@ -35,13 +36,16 @@ public class TestInsertGroup extends MySqlStudentDao {
 		MySqlGroupDao grDAO = new MySqlGroupDao(connection);
 		grDAO.insert(g);*/
 		
-		Student g = new Student();
-		g.setFirstName("TTTTTTT");
-		g.setLastName("UUUUUUUUU");
-		g.setAge(21);
-		g.setEnrolment_date(null);
-		g = (Student) factory.getDao(connection, Student.class).insert(g);
+		Group g = new Group();
+		g.faculty = "FCIM";
+		g.nomGroup = "FAF-151";
+		dao.insert(g);
 		System.out.println(dao.getAll());
+		
+		
+		
+		//g = (Student) factory.getDao(connection, Student.class).insert(g);
+		
 		
 		
 		/*Address a = new Address();

@@ -26,8 +26,6 @@ public class TestInsertStudent extends MySqlStudentDao {
 		
 		//System.out.println(RetrieveAnnotations.ColumnAnnotation(Student.class));
 		//System.out.println(dao.getAll());
-		System.out.println("INSERT INTO " + RetrieveAnnotations.EntityAnnotation(Student.class) + " (" + RetrieveAnnotations.ColumnAnnotation(Student.class)
-		+ ") \n" + "VALUES (?, ?, ?, ?);");
 		
 		Student s = new Student();
 		s.firstName = "abcde";
@@ -37,7 +35,8 @@ public class TestInsertStudent extends MySqlStudentDao {
 		
 		//s = (Student) factory.getDao(connection, Student.class).insert(s);
 		dao.insert(s);
-		System.out.println(dao.getByPK(2));
+		System.out.println(dao.getByPK(1));
+		System.out.println(dao.getAll());
 		
 		
 		

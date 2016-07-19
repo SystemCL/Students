@@ -23,12 +23,12 @@ public class MySqlCourseDao extends AbstractJDBCDao<Course, Integer> {
 
     @Override
     public String getSelectQuery() { 
-        return "SELECT " + RetrieveAnnotations.ColumnAnnotation(Course.class) + " FROM "+ RetrieveAnnotations.EntityAnnotation(Course.class)+";";
+        return "SELECT * FROM "+ RetrieveAnnotations.EntityAnnotation(Course.class);
     }
 
     @Override
     public String getCreateQuery() {
-        return "INSERT INTO "+RetrieveAnnotations.EntityAnnotation(Course.class)+" ("+RetrieveAnnotations.ColumnAnnotation(Course.class) + ") \n" +
+        return "INSERT INTO "+RetrieveAnnotations.EntityAnnotation(Course.class)+" (`nameCourse`,`nameProf`,`startDate`,`endDate`) \n" +
         "VALUES (?, ?, ?, ?);";
     }
 

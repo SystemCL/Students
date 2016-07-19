@@ -46,8 +46,6 @@ public abstract class AbstractJDBCDao<T extends Identification<PK>, PK extends I
             throw new GeneralException(e);
         }
         
-        
-        
         sql = getSelectQuery() + " WHERE id = last_insert_id();";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             ResultSet rs = statement.executeQuery();

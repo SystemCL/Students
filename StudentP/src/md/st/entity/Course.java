@@ -58,6 +58,14 @@ public class Course implements Identification<Integer> {
 		this.endDate = endDate;
 	}
 
+	@Override
+	public String toString(){
+		return " id: " + id + "\n" +
+	           " nameCourse: " + nameCourse+ "\n" +
+			   " nameProf: " + nameProf + "\n" +
+			   "startDate: "	+  startDate +"\n" +
+			   "endDate: " + endDate + "\n\n";
+	}
 	
 
 

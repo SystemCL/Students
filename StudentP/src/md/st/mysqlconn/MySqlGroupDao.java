@@ -22,12 +22,12 @@ public class MySqlGroupDao extends AbstractJDBCDao<Group, Integer> {
 
 	    @Override
 	    public String getSelectQuery() { 
-	        return "SELECT " + RetrieveAnnotations.ColumnAnnotation(Group.class) + " FROM "+ RetrieveAnnotations.EntityAnnotation(Group.class)+";";
+	        return "SELECT " + RetrieveAnnotations.ColumnAnnotation(Group.class) + " FROM "+ RetrieveAnnotations.EntityAnnotation(Group.class);
 	    }
 
 	    @Override
 	    public String getCreateQuery() {
-	        return "INSERT INTO "+RetrieveAnnotations.EntityAnnotation(Group.class)+" ("+RetrieveAnnotations.ColumnAnnotation(Group.class) + ") \n" +
+	        return "INSERT INTO "+RetrieveAnnotations.EntityAnnotation(Group.class)+" (`nameGroup`, `faculty`) \n" +
 	                "VALUES (?, ?);";
 	    }
 
@@ -92,7 +92,7 @@ public class MySqlGroupDao extends AbstractJDBCDao<Group, Integer> {
 		@Override
 		public String getAllSelectQuery() {
 			// TODO Auto-generated method stub
-			return null;
+			return "SELECT * FROM "+ RetrieveAnnotations.EntityAnnotation(Group.class);
 		}
 
 }
