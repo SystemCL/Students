@@ -57,6 +57,35 @@ public class Course implements Identification<Integer> {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+	
+	public Course nameCourse(String nameCourse){
+		this.nameCourse = nameCourse;
+		return this;
+	}
+	
+	public Course nameProf(String nameProf){
+		this.nameProf = nameProf;
+		return this;
+	}
+	
+	public Course startDate(Date startDate){
+		this.startDate = startDate;
+		return this;
+	}
+	
+	public Course endDate(Date endDate){
+		this.endDate = endDate;
+		return this;
+	}
+	
+	public Course build(){
+		Course course = new Course();
+		course.setNameCourse(nameCourse);
+		course.setNameProf(nameProf);
+		course.setStartDate(startDate);
+		course.setEndDate(endDate);
+		return course;
+	}
 
 	@Override
 	public String toString(){

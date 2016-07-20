@@ -17,7 +17,7 @@ public class Address implements Identification<Integer> {
 		return id;
 	}
 
-	protected void setId(int id) {
+	protected void setId(Integer id) {
 		this.id = id;
 	}
 	
@@ -35,6 +35,24 @@ public class Address implements Identification<Integer> {
 
 	public void setNrPhone(String nrPhone) {
 		this.nrPhone = nrPhone;
+	}
+	
+
+	public Address nameAddress(String nameAddress){
+		this.nameAddress = nameAddress;
+		return this;
+	}
+	
+	public Address nrPhone(String nrPhone){
+		this.nrPhone = nrPhone;
+		return this;
+	}
+	
+	public Address build(){
+		Address address = new Address();
+		address.setNameAddress(nameAddress);
+		address.setNrPhone(nrPhone);
+		return address;
 	}
 
 	

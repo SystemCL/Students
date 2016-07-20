@@ -12,13 +12,13 @@ public class Student implements Identification<Integer> {
 	@Column(name = "id")
 	private Integer id;
 	@Column(name = "firstName")
-	public String firstName;
+	private String firstName;
 	@Column(name = "lastName")
-	public String lastName;
+	private String lastName;
 	@Column(name = "age")
-	public int age;
+	private int age;
 	@Column(name = "enrolment_date")
-	public Date enrolment_date;
+	private Date enrolment_date;
 
         /*
 		 * if (annotation instanceof Entity) { Entity entity = (Entity)
@@ -47,7 +47,6 @@ public class Student implements Identification<Integer> {
 		this.id = id;
 	}
 	
-
 	public String getFirstName() {
 		return firstName;
 	}
@@ -78,6 +77,37 @@ public class Student implements Identification<Integer> {
 
 	public void setEnrolment_date(Date enrolment_date) {
 		this.enrolment_date = enrolment_date;
+	}
+
+	public Student firstName(String firstName) {
+		this.firstName = firstName;
+		return this;
+	}
+
+	public Student lastName(String lastName) {
+		this.lastName = lastName;
+		return this;
+	}
+
+	public Student age(int age) {
+		this.age = age;
+		return this;
+	}
+
+	public Student enrolment_date(Date enrolment_date){
+		this.enrolment_date = enrolment_date;
+		return this;
+	}
+	
+	
+	public Student build() {
+		Student student = new Student();
+		student.setFirstName(firstName);
+		student.setLastName(lastName);
+		student.setAge(age);
+		student.setEnrolment_date(enrolment_date);
+		return student;
+
 	}
 
 	@Override

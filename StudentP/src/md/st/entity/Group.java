@@ -36,6 +36,23 @@ public class Group implements Identification<Integer> {
 	public void setFaculty(String faculty) {
 		this.faculty = faculty;
 	}
+	
+	public Group nomGroup(String nomGroup){
+		this.nomGroup = nomGroup;
+		return this;
+	}
+
+	public Group faculty(String faculty){
+		this.faculty = faculty;
+		return this;
+	}
+	
+	public Group build(){
+		Group group = new Group();
+		group.setNomGroup(nomGroup);
+		group.setFaculty(faculty);
+		return group;
+	}
 
 	@Override
 	public String toString(){

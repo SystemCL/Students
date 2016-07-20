@@ -28,10 +28,10 @@ public class TestInsertStudent extends MySqlStudentDao {
 		//System.out.println(dao.getAll());
 		
 		Student s = new Student();
-		s.firstName = "abcde";
-		s.lastName = "cdefg";
-		s.age = 21;
-		s.enrolment_date = null;
+		s.setFirstName("abcde");
+		s.setLastName("cdefg");
+		s.setAge(21);
+		s.setEnrolment_date(null);
 		
 		//s = (Student) factory.getDao(connection, Student.class).insert(s);
 		dao.insert(s);

@@ -22,7 +22,7 @@ public interface GenericDao<T extends Identification<PK>, PK extends Serializabl
     public void update(T object) throws GeneralException;
 
     //Sterge inregistrarea despre obiect din BD
-    public void delete(T object) throws GeneralException;
+    public void delete(T c) throws GeneralException;
 
     //Returneaza lista obiectelor care corespunde tuturor inregistrarilor din BD
     public List<T> getAll() throws GeneralException;

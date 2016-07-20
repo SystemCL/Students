@@ -11,6 +11,7 @@ public @interface Column {
 	public String name() default "";
 	public String date() default "";
 	public int age() default 0;
+	public String type() default "";
 	
     
 

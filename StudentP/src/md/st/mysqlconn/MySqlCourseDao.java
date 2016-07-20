@@ -100,7 +100,7 @@ public class MySqlCourseDao extends AbstractJDBCDao<Course, Integer> {
             throw new GeneralException(e);
         }
     }
-    protected java.sql.Date convert(java.util.Date date) {
+    protected static java.sql.Date convert(java.util.Date date) {
         if (date == null) {
             return null;
         }

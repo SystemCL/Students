@@ -1,5 +1,12 @@
 package md.st.testStudent;
+import java.lang.annotation.Annotation;
 import java.sql.Connection;
+import java.text.DateFormat;
+import java.text.spi.DateFormatProvider;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
+import javax.swing.text.DateFormatter;
 
 import md.st.dao.DaoFactory;
 import md.st.dao.GeneralException;
@@ -23,8 +30,15 @@ public class TestStudentBuilder extends MySqlStudentDao {
 		GenericDao dao = factory.getDao(connection, Student.class);
 		
 		Student st = new Student();
-	     st = new StudentBuilder().firstName("Haralambie").lastName("Petru").build();
+		@SuppressWarnings("deprecation")
+		Date enrolment_student = convert(new Date());
+	     st = new Student().firstName("Ciorescu").lastName("Petru").age(21).enrolment_date(enrolment_student).build();
+	     dao.insert(st);
+
+	     
 		
-		dao.insert(st);
+	    
+	
+	
 	}
 }
