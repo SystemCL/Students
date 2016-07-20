@@ -33,8 +33,10 @@ public class TestStudentBuilder extends MySqlStudentDao {
 		@SuppressWarnings("deprecation")
 		Date enrolment_student = convert(new Date());
 	     st = new Student().firstName("Ciorescu").lastName("Petru").age(21).enrolment_date(enrolment_student).build();
-	     dao.insert(st);
+	    // dao.insert(st);
 
+	     Student student =  (Student) dao.getByPK(170);
+	     dao.delete(student);
 	     
 		
 	    

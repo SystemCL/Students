@@ -28,7 +28,7 @@ public static <T> void main(String[] args) throws GeneralException {
      gr1.setFaculty("YYY");
      gr1.setNomGroup("IIII");
      
-    T c = (T) dao.getByPK(1);
+    Group c =  (Group) dao.getByPK(1);
     dao.delete(c);
      
      //gr1 = factory.getDao(connection, Group.class).update(gr);

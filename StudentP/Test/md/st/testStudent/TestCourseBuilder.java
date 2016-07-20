@@ -30,6 +30,8 @@ public static void main(String[] args) throws GeneralException {
      crs = new Course().nameCourse("BDC").nameProf("Mironov Bettin").startDate(start_date).endDate(end_date).build();
      dao.insert(crs);
      
+     Course c =  (Course) dao.getByPK(1);
+     dao.delete(c);
     //System.out.println(dao.getAll());
 }
 
