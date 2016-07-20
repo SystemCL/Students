@@ -17,7 +17,7 @@ public class Group implements Identification<Integer> {
 		return id;
 	}
 
-	protected void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

@@ -63,14 +63,17 @@ public class MySqlStudentDao extends AbstractJDBCDao<Student, Integer> {
 		LinkedList<Student> result = new LinkedList<Student>();
 		try {
 			while (rs.next()) {
-        		PersistStudent student = new PersistStudent();	
-				//PersistStudent student = new PersistStudent();
-				student.setId(rs.getInt("id"));
+        		PersistStudent student = new PersistStudent();
+				student.setId((int)rs.getObject(1));
+				student.setFirstName((String) rs.getObject(2));
+                student.setLastName((String)rs.getObject(3));
+                student.setAge((int)rs.getObject(4));
+                student.setEnrolment_date((Date)rs.getObject(5));
+			  /*student.setId(rs.getInt("id"));
 				student.setFirstName(rs.getString("firstName"));
                 student.setLastName(rs.getString("lastName"));
                 student.setAge(rs.getInt("age"));
-                student.setEnrolment_date(rs.getDate("enrolment_date"));
-				// student.setGroup_id(rs.getInt("group_id"));
+                student.setEnrolment_date(rs.getDate("enrolment_date"));*/
 				result.add(student);
 			}
 		} catch (Exception e) {
@@ -82,11 +85,16 @@ public class MySqlStudentDao extends AbstractJDBCDao<Student, Integer> {
 	@Override
 	protected void prepareStatementForUpdate(PreparedStatement statement, Student object) throws GeneralException {
 		try {
-			Date sqlDate = convert(object.getEnrolment_date());
-			statement.setString(1, object.getFirstName());
+			//Date sqlDate = convert(object.getEnrolment_date());
+		    
+			statement.setObject(1, object.getFirstName());
+			statement.setObject(2, object.getLastName());
+			statement.setObject(3, object.getAge());
+			statement.setObject(4, object.getEnrolment_date());	
+		  /*statement.setString(1, object.getFirstName());
 			statement.setString(2, object.getLastName());
 			statement.setInt(3, object.getAge());
-			statement.setDate(4, sqlDate);
+			statement.setDate(4, sqlDate);*/
 
 			// statement.setInt(5, object.getGroup_id());
 		} catch (Exception e) {
@@ -98,14 +106,18 @@ public class MySqlStudentDao extends AbstractJDBCDao<Student, Integer> {
 	protected void prepareStatementForInsert(PreparedStatement statement, Student object) throws GeneralException {
 		try {
 				
-			Date sqlDate = convert(object.getEnrolment_date());
+			//Date sqlDate = convert(object.getEnrolment_date());
 		    //	 int studentId = (object.getGroup_id() == null) ? 0 : object.getGroup_id();
 			
-			statement.setString(1, object.getFirstName());	
+			statement.setObject(1, object.getFirstName());
+			statement.setObject(2, object.getLastName());
+			statement.setObject(3, object.getAge());
+			statement.setObject(4, object.getEnrolment_date());	
+		  /*statement.setString(1, object.getFirstName());	
 			statement.setString(2, object.getLastName());
 			statement.setInt(3, object.getAge());
 			statement.setDate(4, sqlDate);
-
+*/
 			// statement.setInt(5, studentId);
 		} catch (Exception e) {
 			throw new GeneralException(e);
@@ -117,6 +129,12 @@ public class MySqlStudentDao extends AbstractJDBCDao<Student, Integer> {
 			return null;
 		}
 		return new java.sql.Date(date.getTime());
+	}
+
+	@Override
+	public String resertAutoIncrement() {
+		// TODO Auto-generated method stub
+		return "ALTER TABLE " + RetrieveAnnotations.EntityAnnotation(Student.class) + " AUTO_INCREMENT = ";
 	}
 
 

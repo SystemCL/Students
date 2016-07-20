@@ -23,6 +23,8 @@ public abstract class AbstractJDBCDao<T extends Identification<PK>, PK extends I
     public abstract String getUpdateQuery();
    
     public abstract String getDeleteQuery();
+    
+    public abstract String resertAutoIncrement();
 
 /* Se intoarce lista de obiecte care corespund cu contentul lui ResultSet*/ 
     protected abstract List<T> parseResultSet(ResultSet rs) throws GeneralException;
@@ -64,7 +66,6 @@ public abstract class AbstractJDBCDao<T extends Identification<PK>, PK extends I
     public T getByPK(Integer key) throws GeneralException {
         List<T> list;
         String sql = getSelectQuery();
-        //String sql = getAllSelectQuery();
         sql += " WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, key);

@@ -9,6 +9,7 @@ import java.util.List;
 import md.st.dao.AbstractJDBCDao;
 import md.st.dao.GeneralException;
 import md.st.entity.Address;
+import md.st.entity.Course;
 import md.st.entity.RetrieveAnnotations;
 import md.st.entity.annotations.Column;
 
@@ -58,10 +59,12 @@ public class MySqlAddressDao extends AbstractJDBCDao<Address, Integer> {
 	    	try {
 	            while (rs.next()) {
 	                PersistAddress address = new PersistAddress();
-	                address.setId(rs.getInt("id"));
+					address.setId((int)rs.getObject(1));
+					address.setNameAddress((String)rs.getObject(2));
+					address.setNrPhone((String)rs.getObject(3));
+	              /*address.setId(rs.getInt("id"));
 	                address.setNameAddress(rs.getString("nameAddress"));
-	                address.setNrPhone(rs.getString("nrPhone"));
-	                
+	                address.setNrPhone(rs.getString("nrPhone"));*/	                
 	                result.add(address);
 	            }
 	        } catch (Exception e) {
@@ -74,8 +77,10 @@ public class MySqlAddressDao extends AbstractJDBCDao<Address, Integer> {
 	 @Override
 	    protected void prepareStatementForInsert(PreparedStatement statement, Address object) throws GeneralException {
 	        try {
-	        	statement.setString(1, object.getNameAddress());
-	            statement.setString(2, object.getNrPhone());
+	        	statement.setObject(1, object.getNameAddress());
+				statement.setObject(2, object.getNrPhone());
+			  /*statement.setString(1, object.getNameAddress());
+	            statement.setString(2, object.getNrPhone());*/
 	        } catch (Exception e) {
 	            throw new GeneralException(e);
 	        }
@@ -84,9 +89,12 @@ public class MySqlAddressDao extends AbstractJDBCDao<Address, Integer> {
 	 @Override
 	    protected void prepareStatementForUpdate(PreparedStatement statement, Address object) throws GeneralException {
 	        try {
-	            statement.setString(1, object.getNameAddress());
+	        	statement.setObject(1, object.getNameAddress());
+	        	statement.setObject(2, object.getNrPhone());
+	        	statement.setObject(3, object.getId());
+	          /*statement.setString(1, object.getNameAddress());
 	            statement.setString(2, object.getNrPhone());
-	            statement.setInt(3, object.getId());
+	            statement.setInt(3, object.getId());*/
 	        } catch (Exception e) {
 	            throw new GeneralException(e);
 	        }
@@ -94,6 +102,12 @@ public class MySqlAddressDao extends AbstractJDBCDao<Address, Integer> {
 
 	@Override
 	public String getAllSelectQuery() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String resertAutoIncrement() {
 		// TODO Auto-generated method stub
 		return null;
 	}
