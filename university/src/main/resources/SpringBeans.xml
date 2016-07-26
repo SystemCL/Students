@@ -1,0 +1,18 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Database Configuration -->
+	<import resource="config/spring/DataSource.xml" />
+	<import resource="config/spring/app-context.xml" />
+	<import resource="config/spring/HibernateSessionFactory.xml" />
+
+	<!-- Beans Declaration -->
+<!-- <import resource="md/utm/library/model/dao/AuthorBean.xml" /> -->
+ 
+<!-- <import resource="md/utm/library/model/dao/BookBean.xml" /> -->    
+  	
+	<import resource="md/st/university/model/dao/studentBean.xml" />
+
+</beans>
